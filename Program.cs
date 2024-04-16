@@ -6,9 +6,9 @@
         {
             Random generator = new Random();
             List<int> numRange = new List<int>();
-            int numCalled = 0, menuChoice, removeValue;
-            double numCount;
-            bool menu = false, validValue;
+            int numCalled = 0, menuChoice, removeValue, addValue, interestNum;
+            int numCount = 0;
+            bool menu = false, validValue, advancedMenu;
             
                 for (int t = 0; t < 25; t++)
                 {
@@ -133,11 +133,66 @@
                     }
                     else if (menuChoice == 4)
                     {
+                        validValue = false;
+                        while (validValue == false)
+                        {
+                            Console.WriteLine("Please type the number you would like to add to your collection \n(Whole numbers as usual):");
+                            if (int.TryParse(Console.ReadLine().Trim(), out addValue))
+                            {
+                                numRange.Add(addValue);
+                                Console.WriteLine("Your new numbers:");
+                                for (int i = 0; i < ((numRange.Count / 5) + 1); i++)
+                                {
+                                    int u;
+                                    if ((numRange.Count / 5) == i)
+                                    {
+                                        u = numRange.Count - (i * 5);
+                                    }
+                                    else
+                                    {
+                                        u = 5;
+                                    }
+                                    for (int t = 0; t < u; t++)
+                                    {
 
+                                        Console.Write(numRange[numCalled] + ", ");
+                                        numCalled++;
+                                    }
+                                    Console.WriteLine();
+                                }
+                                validValue = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Looks like your given value had either decimals or letters, Please try again \n");
+                                Thread.Sleep(1000);
+                            }
+                        }
                     }
                     else if (menuChoice == 5)
                     {
-
+                        validValue = false;
+                        Console.WriteLine("So what number peeked your interest today?\n(Whole numbers only):");
+                        while (validValue == false)
+                        {
+                            if (int.TryParse(Console.ReadLine().Trim(),out interestNum))
+                            {
+                                for (int i = 0; i < numRange.Count; i++)
+                                {
+                                    if (numRange[i]==interestNum)
+                                    {
+                                        numCount++;
+                                    }
+                                }
+                                Console.WriteLine($"\nNumber of '{interestNum}'s: {numCount}");
+                                Thread.Sleep(1000);
+                                validValue = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine("*INVALID INPUT* \nmake sure your number has no deciamls or letters:");
+                            }
+                        }
                     }
                     else if (menuChoice == 6)
                     {
