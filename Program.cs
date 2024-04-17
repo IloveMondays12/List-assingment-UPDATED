@@ -18,14 +18,6 @@
             for (int i = 0; i < 5; i++)
             {
 
-                for (int t = 0; t < 5; t++)
-                {
-
-                    Console.Write(numRange[numCalled] +", ");
-                    numCalled++;
-                }
-                Console.WriteLine();
-            }
             while (!menu)
             {
                 numCalled = 0;
