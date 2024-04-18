@@ -180,12 +180,12 @@ namespace List_assingment_UPDATED
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"Your median number is {(numRange[numRange.Count / 2] + numRange[(numRange.Count / 2) + 1]) / 2}");
+                                    Console.WriteLine($"Your median number is {numRange[numRange.Count / 2]}");
                                 }
                             }
                             if (menuTwoChoice == "c")
                             {
-
+                                
                             }
                         }
                     }
