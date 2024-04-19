@@ -160,13 +160,35 @@ namespace List_assingment_UPDATED
                     }
                     else if (menuChoice == 8)
                     {
-                       while (advancedMenu == false)
+                        while (advancedMenu == false)
                         {
+                            Console.Clear();
+                            numCalled = 0;
+                            for (int i = 0; i < ((numRange.Count / 5) + 1); i++)
+                            {
+                                int u;
+                                if ((numRange.Count / 5) == i)
+                                {
+                                    u = numRange.Count - (i * 5);
+                                }
+                                else
+                                {
+                                    u = 5;
+                                }
+                                for (int t = 0; t < u; t++)
+                                {
+
+                                    Console.Write(numRange[numCalled] + ", ");
+                                    numCalled++;
+                                }
+                                Console.WriteLine();
+                            }
+
                             Console.WriteLine("In here you can find the three functions of data sets! \na) The mean (average)\nb) The median (middle number)\nc)The mode (most common number) \nd) Back to main menu");
                         menuTwoChoice = Console.ReadLine().ToLower().Trim();
                             if (menuTwoChoice == "a")
                             {
-                                Console.Clear();
+                                
                                 for (int i = 0; i < numRange.Count; i++)
                                 {
                                     numTotal = numTotal + numRange[i];
@@ -182,7 +204,7 @@ namespace List_assingment_UPDATED
                             }
                             if (menuTwoChoice == "b")
                             {
-                                Console.Clear();
+                                
                                 if (numRange.Count % 2 == 0)
                                 {
                                     Console.WriteLine($"Your middle number is between {(numRange[numRange.Count/2]+ numRange[(numRange.Count / 2)+1])/2}");   
@@ -194,7 +216,7 @@ namespace List_assingment_UPDATED
                             }
                             if (menuTwoChoice == "c")
                             {
-                                Console.Clear();
+                                
                                 mode = 0;
                                 highestFreq = 0;
                                 for (int i = 0;i < numRange.Count; i++)
