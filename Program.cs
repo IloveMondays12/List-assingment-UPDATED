@@ -8,8 +8,9 @@ namespace List_assingment_UPDATED
         {
             Random generator = new Random();
             List<int> numRange = new List<int>();
-            int numCalled = 0, menuChoice, removeValue, addValue, interestNum, biggestNum, smallestNum, highestFreq, mode, freq;
-            int numCount = 0, numTotal = 0;
+            List<int> dupeList = new List<int>();
+            int numCalled = 0, menuChoice, removeValue, addValue, interestNum, biggestNum, smallestNum, highestFreq, mode, freq, numCount = 0;
+            double numTotal = 0;
             string menuTwoChoice;
             bool menu = false, validValue, advancedMenu = false;
             
@@ -22,9 +23,11 @@ namespace List_assingment_UPDATED
             while (!menu)
             {
                 Console.Clear();
+                numCalled = 0;
                 for (int i = 0; i < ((numRange.Count / 5) + 1); i++)
                 {
                     int u;
+                    
                     if ((numRange.Count / 5) == i)
                     {
                         u = numRange.Count - (i * 5);
@@ -158,6 +161,7 @@ namespace List_assingment_UPDATED
                             }
                         }
                     }
+                    
                     else if (menuChoice == 8)
                     {
                         while (advancedMenu == false)
@@ -185,10 +189,10 @@ namespace List_assingment_UPDATED
                             }
 
                             Console.WriteLine("In here you can find the three functions of data sets! \na) The mean (average)\nb) The median (middle number)\nc)The mode (most common number) \nd) Back to main menu");
-                        menuTwoChoice = Console.ReadLine().ToLower().Trim();
+                            menuTwoChoice = Console.ReadLine().ToLower().Trim();
                             if (menuTwoChoice == "a")
                             {
-                                
+                                numTotal = 0;
                                 for (int i = 0; i < numRange.Count; i++)
                                 {
                                     numTotal = numTotal + numRange[i];
@@ -202,19 +206,21 @@ namespace List_assingment_UPDATED
                                     Console.WriteLine($"The average of your numbers add up to be... {numTotal / numRange.Count} \nGood luck!");
                                 }
                             }
-                            if (menuTwoChoice == "b")
+                            else if (menuTwoChoice == "b")
                             {
-                                
-                                if (numRange.Count % 2 == 0)
+                                dupeList = numRange.ToList();
+                                dupeList.Sort();
+                                if (dupeList.Count % 2 == 0)
                                 {
-                                    Console.WriteLine($"Your middle number is between {(numRange[numRange.Count/2]+ numRange[(numRange.Count / 2)+1])/2}");   
+                                    Console.WriteLine($"Your middle number is between {(dupeList[dupeList.Count/2]+ dupeList[(dupeList.Count / 2)+1])/2}");   
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"Your median number is {numRange[numRange.Count / 2]}");
+                                    Console.WriteLine($"Your median number is {dupeList[dupeList.Count / 2]}");
                                 }
+                                dupeList.Clear();
                             }
-                            if (menuTwoChoice == "c")
+                            else if (menuTwoChoice == "c")
                             {
                                 
                                 mode = 0;
@@ -238,18 +244,24 @@ namespace List_assingment_UPDATED
                                 Console.WriteLine($"Here is one of if not the only most common number in your program: {mode}, appearing {highestFreq} times.");
                                 
                             }
-                            if (menuTwoChoice == "d")
+                            else if (menuTwoChoice == "d")
                             {
                                 Console.Clear();
                                 advancedMenu = true;
+                                Console.WriteLine("Prepare to return to the menu");
+
                             }
+                            else
+                            {
+                                Console.WriteLine("Your value wasn't on our list! Try again");
+                                Thread.Sleep(500);
+                            }
+                            Console.WriteLine("Press 'Enter' to continue.");
+                            Console.ReadLine();
                         }
                     }
-                    else if (menuChoice == 9)
-                    {
-                        menu = true;
-                    }
-                    Console.WriteLine("Press 'Enter' to continue.");
+                    
+                    Console.WriteLine("Press 'Enter' to continue to the main menu.");
                     Console.ReadLine();
                 }
 
