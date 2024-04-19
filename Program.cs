@@ -8,7 +8,7 @@ namespace List_assingment_UPDATED
         {
             Random generator = new Random();
             List<int> numRange = new List<int>();
-            int numCalled = 0, menuChoice, removeValue, addValue, interestNum, biggestNum,smallestNum;
+            int numCalled = 0, menuChoice, removeValue, addValue, interestNum, biggestNum, smallestNum, highestFreq, mode, freq;
             int numCount = 0, numTotal = 0;
             string menuTwoChoice;
             bool menu = false, validValue, advancedMenu = false;
@@ -166,14 +166,23 @@ namespace List_assingment_UPDATED
                         menuTwoChoice = Console.ReadLine().ToLower().Trim();
                             if (menuTwoChoice == "a")
                             {
+                                Console.Clear();
                                 for (int i = 0; i < numRange.Count; i++)
                                 {
                                     numTotal = numTotal + numRange[i];
                                 }
-                                Console.WriteLine($"The average of your numbers add up to be... {numTotal/numRange.Count} \nGood luck!");
+                                if (numRange.Count == 0)
+                                {
+                                    Console.WriteLine($"The average of your numbers add up to be... 0 \nGood luck!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"The average of your numbers add up to be... {numTotal / numRange.Count} \nGood luck!");
+                                }
                             }
                             if (menuTwoChoice == "b")
                             {
+                                Console.Clear();
                                 if (numRange.Count % 2 == 0)
                                 {
                                     Console.WriteLine($"Your middle number is between {(numRange[numRange.Count/2]+ numRange[(numRange.Count / 2)+1])/2}");   
@@ -185,7 +194,32 @@ namespace List_assingment_UPDATED
                             }
                             if (menuTwoChoice == "c")
                             {
+                                Console.Clear();
+                                mode = 0;
+                                highestFreq = 0;
+                                for (int i = 0;i < numRange.Count; i++)
+                                {
+                                    freq = 0;
+                                    for (int j = 0;j < numRange.Count; j++)
+                                    {
+                                        if (numRange[i] == numRange[j])
+                                        {
+                                            freq++;
+                                        }
+                                    }
+                                    if ( freq > highestFreq)
+                                    {
+                                        mode = numRange[i];
+                                        highestFreq = freq;
+                                    }
+                                }
+                                Console.WriteLine($"Here is one of if not the only most common number in your program: {mode}, appearing {highestFreq} times.");
                                 
+                            }
+                            if (menuTwoChoice == "d")
+                            {
+                                Console.Clear();
+                                advancedMenu = true;
                             }
                         }
                     }
