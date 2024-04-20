@@ -164,6 +164,7 @@ namespace List_assingment_UPDATED
                     
                     else if (menuChoice == 8)
                     {
+                        advancedMenu = true;
                         while (advancedMenu == false)
                         {
                             Console.Clear();
@@ -260,12 +261,36 @@ namespace List_assingment_UPDATED
                             Console.ReadLine();
                         }
                     }
-                    
+                    if (menuChoice == 9)
+                    {
+                        menu = true;
+                    }
                     Console.WriteLine("Press 'Enter' to continue to the main menu.");
                     Console.ReadLine();
                 }
 
             }
+            Console.Clear() ;   
+            Console.WriteLine("Now let's move onto the vegatables!");
+            Thread.Sleep(500);
+            List<string> vegatables = new List<string>();
+            vegatables.Add("CARROT");
+            vegatables.Add("BEET");
+            vegatables.Add("CELERY");
+            vegatables.Add("RADDISH");
+            vegatables.Add("CABBAGE");
+            menu = false;
+            menuChoice = 0;
+            while (menu = false)
+            {
+                Console.WriteLine("Your vegatables:");
+                for (int i = 0; i < vegatables.Count; i++)
+                {
+                    Console.WriteLine($"{i+1}) {vegatables[i]}");
+                }
+                Console.WriteLine("Options: \n1) Remove vegatable by index \n2) Remove vegatable by name \n3) Search for vegatable \n4) Add a vegatable \n5) Sort List");
+            }
+
         }
     }
 }
