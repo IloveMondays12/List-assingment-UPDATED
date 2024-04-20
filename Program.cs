@@ -288,7 +288,38 @@ namespace List_assingment_UPDATED
                 {
                     Console.WriteLine($"{i+1}) {vegatables[i]}");
                 }
-                Console.WriteLine("Options: \n1) Remove vegatable by index \n2) Remove vegatable by name \n3) Search for vegatable \n4) Add a vegatable \n5) Sort List");
+                Console.WriteLine("Options: \n1) Remove vegatable by index \n2) Remove vegatable by name \n3) Search for vegatable \n4) Add a vegatable \n5) Sort List \nClear the List (Exit) \n \nWhere would you like to start?(enter a number listed the menu)");
+                while (!int.TryParse(Console.ReadLine(), out menuChoice))
+                {
+                    Console.WriteLine("Doesn't look like you've entered a valid number please try again");
+                }
+                
+                    if (menuChoice == 1)
+                    {
+                     Console.WriteLine("Please enter the number corresponding with the vegatbale that you want ");
+                    }
+                    if (menuChoice == 2)
+                    {
+
+                    }
+                    if (menuChoice == 3)
+                    {
+
+                    }
+                    if (menuChoice == 4)
+                    {
+
+                    }
+                    if (menuChoice == 5)
+                    {
+
+                    }
+                    if (menuChoice == 6)
+                    {
+
+                    }
+                    
+                
             }
 
         }
