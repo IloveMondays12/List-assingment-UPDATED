@@ -283,6 +283,8 @@ namespace List_assingment_UPDATED
             menuChoice = 0;
             while (menu = false)
             {
+                advancedMenu = false;
+                removeValue = 0;
                 Console.WriteLine("Your vegatables:");
                 for (int i = 0; i < vegatables.Count; i++)
                 {
@@ -297,6 +299,16 @@ namespace List_assingment_UPDATED
                     if (menuChoice == 1)
                     {
                      Console.WriteLine("Please enter the number corresponding with the vegatbale that you want ");
+                    while(advancedMenu = false)
+                    {
+                        if(int.TryParse(Console.ReadLine(),out  removeValue))
+                        {
+                            if (removeValue <= vegatables.Count+1 && removeValue >= vegatables.Count + 1)
+                            {
+
+                            }
+                        }
+                    }
                     }
                     if (menuChoice == 2)
                     {
