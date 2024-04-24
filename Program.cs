@@ -304,14 +304,15 @@ namespace List_assingment_UPDATED
                             Console.WriteLine("Looks like your list of vegetables is already empty. \nPress 'Enter' to continue");
                             Console.ReadLine();
                         }
-                        while (advancedMenu = false)
+                        while (advancedMenu == false)
                         {
+                            Console.WriteLine("Please enter the number corresponding with the vegetable that you want to remove");
                             if (int.TryParse(Console.ReadLine(), out removeValue))
                             {
-                                Console.WriteLine("Please enter the number corresponding with the vegetable that you want ");
-                                if (removeValue <= vegetables.Count + 1 && removeValue >= vegetables.Count + 1)
+                                if (removeValue <= vegetables.Count && removeValue >= 1)
                                 {
-                                    vegetables.RemoveAt(removeValue + 1);
+                                    vegetables.RemoveAt(removeValue - 1);
+                                    advancedMenu = true;
                                 }
                                 else
                                 {
