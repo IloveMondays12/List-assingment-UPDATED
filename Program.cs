@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel.Design;
+using System.Runtime.InteropServices;
 
 namespace List_assingment_UPDATED
 {
@@ -11,7 +12,7 @@ namespace List_assingment_UPDATED
             List<int> dupeList = new List<int>();
             int numCalled = 0, menuChoice, removeValue, addValue, interestNum, biggestNum, smallestNum, highestFreq, mode, freq, numCount = 0;
             double numTotal = 0;
-            string menuTwoChoice;
+            string menuTwoChoice, removeVeg;
             bool menu = false, validValue, advancedMenu = false;
             
                 for (int t = 0; t < 25; t++)
@@ -160,11 +161,12 @@ namespace List_assingment_UPDATED
                                 smallestNum = numRange[i];
                             }
                         }
+                        Console.WriteLine($"After looking over your list we've narrowed your smallest number to a lowly {smallestNum}");
                     }
                     
                     else if (menuChoice == 8)
                     {
-                        advancedMenu = true;
+                        advancedMenu = false;
                         while (advancedMenu == false)
                         {
                             Console.Clear();
@@ -217,7 +219,7 @@ namespace List_assingment_UPDATED
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"Your median number is {dupeList[dupeList.Count / 2]}");
+                                    Console.WriteLine($"Your median number is {dupeList[(dupeList.Count / 2) -1]}");
                                 }
                                 dupeList.Clear();
                             }
@@ -271,67 +273,135 @@ namespace List_assingment_UPDATED
 
             }
             Console.Clear() ;   
-            Console.WriteLine("Now let's move onto the vegatables!");
-            Thread.Sleep(500);
-            List<string> vegatables = new List<string>();
-            vegatables.Add("CARROT");
-            vegatables.Add("BEET");
-            vegatables.Add("CELERY");
-            vegatables.Add("RADDISH");
-            vegatables.Add("CABBAGE");
+            Console.WriteLine("Now let's move onto the vegetables!");
+            Thread.Sleep(2000);
+            List<string> vegetables = new List<string>();
+            vegetables.Add("CARROT");
+            vegetables.Add("BEET");
+            vegetables.Add("CELERY");
+            vegetables.Add("RADDISH");
+            vegetables.Add("CABBAGE");
             menu = false;
             menuChoice = 0;
-            while (menu = false)
+            while (menu == false)
             {
-                advancedMenu = false;
+                Console.Clear();
                 removeValue = 0;
-                Console.WriteLine("Your vegatables:");
-                for (int i = 0; i < vegatables.Count; i++)
+                Console.WriteLine("Your vegetables:");
+                for (int i = 0; i < vegetables.Count; i++)
                 {
-                    Console.WriteLine($"{i+1}) {vegatables[i]}");
+                    Console.WriteLine($"{i+1}) {vegetables[i]}");
                 }
-                Console.WriteLine("Options: \n1) Remove vegatable by index \n2) Remove vegatable by name \n3) Search for vegatable \n4) Add a vegatable \n5) Sort List \nClear the List (Exit) \n \nWhere would you like to start?(enter a number listed the menu)");
-                while (!int.TryParse(Console.ReadLine(), out menuChoice))
+                Console.WriteLine("Options: \n1) Remove vegetable by index \n2) Remove vegetable by name \n3) Search for vegetable \n4) Add a vegetable \n5) Sort List \n6) Clear the List (Exit) \n \nWhere would you like to start?(enter a number listed the menu)");
+                if (int.TryParse(Console.ReadLine(), out menuChoice))
                 {
-                    Console.WriteLine("Doesn't look like you've entered a valid number please try again");
-                }
-                
                     if (menuChoice == 1)
                     {
-                     Console.WriteLine("Please enter the number corresponding with the vegatbale that you want ");
-                    while(advancedMenu = false)
-                    {
-                        if(int.TryParse(Console.ReadLine(),out  removeValue))
+                        advancedMenu = false;
+                        if (vegetables.Count == 0)
                         {
-                            if (removeValue <= vegatables.Count+1 && removeValue >= vegatables.Count + 1)
+                            advancedMenu = true;
+                            Console.WriteLine("Looks like your list of vegetables is already empty. \nPress 'Enter' to continue");
+                            Console.ReadLine();
+                        }
+                        while (advancedMenu = false)
+                        {
+                            if (int.TryParse(Console.ReadLine(), out removeValue))
                             {
-
+                                Console.WriteLine("Please enter the number corresponding with the vegetable that you want ");
+                                if (removeValue <= vegetables.Count + 1 && removeValue >= vegetables.Count + 1)
+                                {
+                                    vegetables.RemoveAt(removeValue + 1);
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Your value isn't on the menu. Your vegetables are inbetween 1 - {vegetables.Count}. Try again");
+                                }
                             }
                         }
                     }
-                    }
                     if (menuChoice == 2)
                     {
+                        Console.WriteLine("Type the vegetable you want removed from your list:");
+                        removeVeg = Console.ReadLine().Trim().ToUpper();
+                        if (vegetables.Contains(removeVeg))
+                        {
+                            for (int i = 0; i < vegetables.Count; i++)
+                            {
+                                if (removeVeg == vegetables[i])
+                                {
+                                    vegetables.RemoveAt(i);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Either you spelled the vegetable wrong, or your vegetable isn't on the index.");
+                        }
 
                     }
                     if (menuChoice == 3)
                     {
-
+                        Console.WriteLine("Type the vegetable you wanted to see about today:");
+                        removeVeg = Console.ReadLine().Trim().ToUpper();
+                        if (vegetables.Contains(removeVeg))
+                        {
+                            Console.WriteLine("\nYES - your list does include that vegetable");
+                        }
+                        else
+                        {
+                            Console.WriteLine("\nNO - your list does not include that vegetable");
+                        }
                     }
                     if (menuChoice == 4)
                     {
 
+                        Console.WriteLine("Please type the vegetable you want to add to your list");
+                        removeVeg = Console.ReadLine().Trim().ToUpper();
+                        if (vegetables.Contains(removeVeg))
+                        {
+                            Console.WriteLine("\nThat vegetable is already in your list.");
+                            Thread.Sleep(1000);
+                        }
+                        else
+                        {
+                            vegetables.Add(removeVeg);
+                            Console.WriteLine("\n*Your vegetable has been added");
+                            Thread.Sleep(1000);
+                        }
                     }
                     if (menuChoice == 5)
                     {
-
+                        vegetables.Sort();
                     }
                     if (menuChoice == 6)
                     {
-
+                        vegetables.Clear();
                     }
-                    
-                
+                    if (vegetables.Count == 0)
+                    {
+                        menu = true;
+                        Console.WriteLine("\nThanks for stopping by!");
+                        Thread.Sleep(2500);
+                    }
+                    else if (menuChoice > 6 || menuChoice < 1)
+                    {
+                        Console.WriteLine("Your number wasn't on the menu try again with something a little more in range!");
+                        Thread.Sleep(2000);
+                    }
+                    else
+                    {
+                    Console.WriteLine("Press 'Enter' to continue to the main menu.");
+                    Console.ReadLine();
+                    }
+
+                }
+
+            else
+               {
+                 Console.WriteLine("Doesn't look like you've entered a valid number or a word please try again");
+                 Thread.Sleep(3000);
+                }
             }
 
         }
